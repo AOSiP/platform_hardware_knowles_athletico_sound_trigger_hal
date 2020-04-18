@@ -23,7 +23,7 @@ LOCAL_SRC_FILES := sound_trigger_hw_iaxxx.c cvq_util.c
 LOCAL_VENDOR_MODULE := true
 LOCAL_C_INCLUDES += external/tinyalsa/include \
 			$(call include-path-for, audio-route)
-LOCAL_HEADER_LIBRARIES := libhardware_headers
+LOCAL_HEADER_LIBRARIES += libhardware_headers generated_kernel_headers
 LOCAL_SHARED_LIBRARIES := liblog \
 			libcutils \
 			libtinyalsa \
@@ -49,6 +49,7 @@ LOCAL_SHARED_LIBRARIES := liblog \
 			libtinyalsa \
 			libtunnel
 LOCAL_MODULE_TAGS := optional
+LOCAL_HEADER_LIBRARIES += generated_kernel_headers
 ifneq (,$(findstring $(PLATFORM_VERSION), P))
 LOCAL_PROPRIETARY_MODULE := true
 endif
@@ -62,7 +63,7 @@ LOCAL_VENDOR_MODULE := true
 LOCAL_SRC_FILES := tunnel.c
 LOCAL_SHARED_LIBRARIES := liblog \
 			libcutils
-
+LOCAL_HEADER_LIBRARIES += generated_kernel_headers
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
@@ -73,6 +74,7 @@ LOCAL_SRC_FILES := iaxxx_odsp_hw.c
 LOCAL_SHARED_LIBRARIES := liblog \
 			libcutils
 LOCAL_MODULE_TAGS := optional
+LOCAL_HEADER_LIBRARIES += generated_kernel_headers
 
 include $(BUILD_SHARED_LIBRARY)
 
