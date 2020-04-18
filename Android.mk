@@ -15,6 +15,7 @@ ifneq (,$(findstring $(USE_SOUND_TRIGGER_HAL),iaxxx))
 
 LOCAL_PATH := $(call my-dir)
 
+
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := sound_trigger.primary.$(TARGET_BOARD_PLATFORM)
@@ -49,6 +50,7 @@ LOCAL_SHARED_LIBRARIES := liblog \
 			libtinyalsa \
 			libtunnel
 LOCAL_MODULE_TAGS := optional
+LOCAL_HEADER_LIBRARIES += generated_kernel_headers
 ifneq (,$(findstring $(PLATFORM_VERSION), P))
 LOCAL_PROPRIETARY_MODULE := true
 endif
@@ -62,7 +64,7 @@ LOCAL_VENDOR_MODULE := true
 LOCAL_SRC_FILES := tunnel.c
 LOCAL_SHARED_LIBRARIES := liblog \
 			libcutils
-
+LOCAL_HEADER_LIBRARIES += generated_kernel_headers
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
@@ -73,6 +75,7 @@ LOCAL_SRC_FILES := iaxxx_odsp_hw.c
 LOCAL_SHARED_LIBRARIES := liblog \
 			libcutils
 LOCAL_MODULE_TAGS := optional
+LOCAL_HEADER_LIBRARIES += generated_kernel_headers
 
 include $(BUILD_SHARED_LIBRARY)
 
